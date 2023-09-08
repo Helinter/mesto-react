@@ -67,21 +67,15 @@ export class Api {
     return this._checkResponse(res);
   }
 
-  async addLike(cardId) {
+  async changeLikeCardStatus(cardId, isLiked) {
+    const method = isLiked ? 'PUT' : 'DELETE';
     const res = await fetch(`${this.url}/cards/likes/${cardId}`, {
-      method: 'PUT',
+      method,
       headers: this.headers
     });
     return this._checkResponse(res);
   }
-
-  async deleteLike(cardId) {
-    const res = await fetch(`${this.url}/cards/likes/${cardId}`, {
-      method: 'DELETE',
-      headers: this.headers
-    });
-    return this._checkResponse(res);
-  }
+  
 
   async updateAvatar(avatarLink) {
     const res = await fetch(`${this.url}/users/me/avatar`, {
