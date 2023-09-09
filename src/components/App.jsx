@@ -80,6 +80,9 @@ function App() {
       setCurrentUser(res)
       closeAllPopups();
     })
+    .catch((error) => {
+      console.error('Ошибка при обновлении данных о пользователе:', error);
+    });
   }
 
   const handleUpdateAvatar = (newAvatar) => {
