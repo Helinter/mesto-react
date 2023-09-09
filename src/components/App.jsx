@@ -37,8 +37,11 @@ function App() {
 
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-    });
-  }
+    })
+    .catch((error) => {
+      console.error('Ошибка при загрузке данных:', error);
+  });
+}
 
   const handleDeleteClick = (card) => {
     api.deleteCard(card._id)

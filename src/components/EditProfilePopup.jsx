@@ -22,7 +22,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     setName(currentUser.name);
     setDescription(currentUser.about);
     }
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
@@ -42,6 +42,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText="Сохранить"
     >
       <span id="formName-error" className="error"></span>
       <input
@@ -67,9 +68,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         onChange={handleDescriptionChange}
       />
       <span id="formJob-error" className="error"></span>
-      <button type="submit" className="popup__container-button">
-        Сохранить
-      </button>
+      
     </PopupWithForm>
   );
 }
